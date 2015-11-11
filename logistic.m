@@ -14,14 +14,11 @@ plot(x(pos, 2), x(pos,3), '+'); hold on
 plot(x(neg, 2), x(neg, 3), 'o')
 
 g = inline('1.0 ./ (1.0 + exp(-z))'); 
-
+%! I think it might be better to set theta a random number   
 theta = zeros(size(x,2),1);
 
 J = zeros(20, 1);
 
-size(h .* 1-h)
-size(h)
-size(x)
 
 for i = 1:20
   h = g(x*theta);
@@ -35,4 +32,7 @@ for i = 1:20
   theta = theta - hess\grad;
 end
 
+size(h .*(1-h))%!it's the derivative of g
+size(h)
+size(x)
 theta
