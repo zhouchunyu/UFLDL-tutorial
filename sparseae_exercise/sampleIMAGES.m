@@ -47,12 +47,12 @@ end
 
 
 %% ---------------------------------------------------------------
-function patches = c(patches)
+function patches = normalizeData(patches)
 
 % Squash data to [0.1, 0.9] since we use sigmoid as the activation
 % function in the output layer
 
-% Remove DC sam(mean of images). 
+% Remove DC (mean of images). 
 patches = bsxfun(@minus, patches, mean(patches));
 
 % Truncate to +/-3 standard deviations and scale to -1 to 1
